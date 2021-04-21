@@ -1,0 +1,20 @@
+.TopNav{
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75); 
+  width:100%;
+
+}
+.Search{
+  position:relative;
+  right:35%;
+}
+.Search button {
+  margin-left:15px;
+}
+.rightIcons img  {
+  padding-left:15px;
+
+}
+.rightIcons img:hover{
+  cursor: pointer;
+  opacity: 0.5;  
+}

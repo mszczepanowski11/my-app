@@ -1,0 +1,8 @@
+li {
+    padding:10px;  
+    font-weight:bold;
+    text-align: left;
+
+    & img     { margin-right:10px }
+    & :hover  { text-decoration: none}
+}
