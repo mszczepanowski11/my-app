@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import styled from 'styled-components'
 
 const Content = styled.div`
@@ -11,13 +11,27 @@ const Content = styled.div`
     outline:none;
 
 `;
- 
-const Profile:FC = () => {
+
+
+export default class Profile extends React.Component{
+
+    state = {
+        user:null,
+        company:null
+      }
+  
+        async componentDidMount() {
+          const url = 'https://jsonplaceholder.typicode.com/users'
+          const response = await fetch(url)
+          const data = await response.json()
+          this.setState({user:data[0].name, company:data[0].company.name})
+      }
+   render(){
     return(
         <Content>
             <img src="./icons/image.png" className="profilePhoto" alt="image1"/>
-            <h4>Humberta Swift</h4>
-            <label>Job - title company</label>
+            <h4 style={{fontSize:'20px'}}>{this.state.user}</h4>
+            <label>{this.state.company}</label>
 
             <hr></hr>
 
@@ -30,6 +44,6 @@ const Profile:FC = () => {
                 <button><img src="./icons/plus.png" alt="user-plus"/></button>
             </span>
         </Content>
+    
     )}
-
-export default Profile
+  }
