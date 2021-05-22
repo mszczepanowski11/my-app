@@ -25,7 +25,7 @@ const monthName:string[] = [
 ];
 
 const date = new Date();
-const currentDate = date.getDate()+ ' ' + monthName[date.getMonth()] + ' ' + date.getFullYear();
+export const currentDate = date.getDate()+ ' ' + monthName[date.getMonth()] + ' ' + date.getFullYear();
 
 export default class LatestPublications extends React.Component {
     
