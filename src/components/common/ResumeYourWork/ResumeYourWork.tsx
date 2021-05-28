@@ -1,44 +1,83 @@
-import React,{FC} from "react"
+import React,{FC,useState} from "react"
+import {useSelector} from 'react-redux'
+import { IState } from '../../../reducers/index';
+import { IUsersReducer } from '../../../reducers/usersReducer';
+import { IPostsReducer } from '../../../reducers/postsReducers';
+import Pagination from './Pagination'
 import styled from 'styled-components'
-import {Card,Input,Icon,Dropdown,Pagination} from 'semantic-ui-react'
-import {SingleResumeProps,WorldCompanyResume} from './SingleResume'
+import {Card,Icon,Input,Dropdown} from 'semantic-ui-react'
+
+
 
 const Content = styled.div`
     position:absolute;
-    top:105%;
-    left:20%;
-    width:1100px;
+    top:110%;
+    right:3%;
+    width:1120px;
+    max-height:1024px;
 `
 
 const ResumeYourWork : FC = () => {
-    return(
-        <Content>
-            <Input style={{left:'70%'}} icon='search' placeholder='Filter by title...'className='search'/>
-            <Dropdown style={{left:'72%',color:'#007bff'}} text='Followed'>
 
-            </Dropdown>
-            <header style={{fontSize:'30px',margin:'20px',paddingBottom:'15px'}}>Resume your work</header>
-            <Card.Group doubling>   
-                <WorldCompanyResume/>
-                <SingleResumeProps/>
-                <SingleResumeProps/>
-                <SingleResumeProps/>
-                <SingleResumeProps/>
-                <SingleResumeProps/>
-                <SingleResumeProps/>
-                <SingleResumeProps/>
-                <SingleResumeProps/>
-            </Card.Group>
-            
-            <Pagination style={{margin:'25px 0 25px 23%'}}
-                defaultActivePage={5}
-                ellipsisItem={{ content: <Icon name='ellipsis horizontal' />, icon: true }}
-                prevItem={{ content:'Previous', icon: true }}
-                nextItem={{ content: 'Next', icon: true }}
-                totalPages={18}
-            />
-        </Content>
+    const [searchTerm,setSearchTerm] = useState('')
+    const [currentPage,setCurrentPage] = useState(1)
+    const [postsPerPage] = useState(10)
+
+    const { usersList, postsList } = useSelector<IState, IUsersReducer & IPostsReducer>
+        (globalState => ({
+        ...globalState.users,
+        ...globalState.posts,
+    }));
+
+    const indexOfLastPost = currentPage * postsPerPage
+    const indexOfFirstPost = indexOfLastPost - postsPerPage
+    const posts = postsList.slice(indexOfFirstPost,indexOfLastPost)
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+
+    const SingleResume = posts.filter((post,key) => {
+        const displayPost = posts?.[key].title    
+
+        if(searchTerm === "")
+            return displayPost
+        else if(displayPost.toLowerCase().includes(searchTerm.toLowerCase()))
+            return displayPost
+    }).map((post,key) => 
+
+     <Card style={{width:'1100px',margin:'15px'}}>
+        <Card.Content>
+               <Card.Header style={{color:'var(--text-color)'}}>
+                   {posts[key]?.title}
+                </Card.Header>
+               <Card.Description>{posts[key]?.body}</Card.Description>
+               <Card.Meta style={{paddingRight:'10px'}}>
+                  <Icon  name='world'/> Subsid.Corp • {' '}
+                  <Icon style={{margin:'5px'}} name='file outline'/> Client contract • {' '}
+                  <span>Updated 3 days ago by {usersList?.[posts?.[key]?.userId]?.name}</span>
+               </Card.Meta>
+        </Card.Content>
+     </Card>
     )
+
+
+    return(
+             <Content>
+                <Input style={{left:'70%'}}
+                       placeholder='Filter by title...' 
+                       className='search'
+                       onChange={(event) => setSearchTerm(event.target.value)}
+                       />
+                <Dropdown style={{left:'72%',color:'#007bff'}} text='Followed'/>
+                <header style={{fontSize:'30px',margin:'20px',paddingBottom:'15px'}}>Resume your work</header>
+                 <Card.Group doubling>
+                     {SingleResume}
+                </Card.Group>
+                    <Pagination
+                        postsPerPage={postsPerPage}
+                        totalPosts={postsList.length}
+                        paginate={paginate}
+                    />
+             </Content>
+       )
 }
 
 export default ResumeYourWork
