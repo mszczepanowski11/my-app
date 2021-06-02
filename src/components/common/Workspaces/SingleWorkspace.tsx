@@ -22,7 +22,7 @@ const SingleWorkspace = (props) => {
    
     return(
         <SingleWorkspaceContent>
-            <Card link style={{display:'inline-block',margin:'10px'}}>
+            <Card style={{display:'inline-block',margin:'10px'}}>
                 <Image style={{width:'280px',height:'140px'}} src={props.workspace.image} />
                 <HeaderImage>
                         <Icon  size='huge' name={props.workspace.headerImage} alt="single_workspace_icon"/>
