@@ -1,0 +1,38 @@
+.buttons-group > * {
+ font-size: 15px;
+ margin-left: 20px;
+ border:1px solid black;
+ border-radius:3px;
+}
+.buttons-group button:nth-child(1){
+    background-color:rgb(229,230,242);
+}
+.buttons-group button:nth-child(2){
+    color:rgb(57,138,39);
+    background-color:rgb(194,224,193)
+}
+.buttons-group button:nth-child(3){
+    color:rgb(43,123,185);
+    background-color:rgb(232,244,249)
+}
+
+.buttons-group button:nth-child(4){
+    color:rgb(198,144,44);
+    background-color:rgb(238,223,184)
+}
+.buttons-group button:nth-child(5){
+    color:rgb(52,57,77);
+    background-color:rgb(193,193,193)
+}
+.buttons-group button:nth-child(6){
+    color:rgb(77,82,101);
+    background-color:rgb(226, 226, 226)
+}
+.buttons-group button:nth-child(7){
+    color:rgb(77,78,98);
+    background-color:rgb(255,255,255)
+}
+.buttons-group button:nth-child(8){
+    color:rgb(77,78,98);
+    background-color:rgb(255,255,255)
+}

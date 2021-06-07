@@ -1,24 +1,18 @@
-import React, {FC,useEffect} from 'react'
+import React, {FC} from 'react'
 import ExpandedMenu from './ExpandedMenu'
 import './TopNav.scss'
-import 'bootstrap/dist/css/bootstrap.css'
 import styled from 'styled-components'
 import {Form,FormControl,Navbar} from 'react-bootstrap'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 const RightIcons = styled.div``; 
 
 
-const TopNav : FC = () => {
+const TopNav:FC = () => {
     
+
     return(
-      <Router>
           <Navbar className="TopNav" bg="light">
             <Navbar.Collapse id="basic-navbar-nav">
               <Link to="/">
@@ -35,7 +29,6 @@ const TopNav : FC = () => {
               </ExpandedMenu>
 
               </Navbar.Collapse>
-              
                 <Form inline className="Search">
                   <FormControl type="text" placeholder="Search Legalcluster"/>
                 </Form>
@@ -46,7 +39,6 @@ const TopNav : FC = () => {
               <img src="icons/bell.png" alt="bell"/>
           </RightIcons>
         </Navbar>
-     </Router>
     );
 };
 

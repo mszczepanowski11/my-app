@@ -1,4 +1,4 @@
-import { IPosts } from '../../components/Entities/posts';
+import { IPosts } from '../../components/Entities/APIData/posts';
 
 export const GET_POSTS = "GET_POSTS";
 

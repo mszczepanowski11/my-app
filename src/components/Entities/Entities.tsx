@@ -84,7 +84,7 @@ export const Entities:FC = () => {
                     <div className='entities-filters-content'>
                         <div className='filter-all-content'> 
                             <Icon name='dot circle outline'/>
-                            <Dropdown text='All'>
+                              <Dropdown text='All'>
                                <Dropdown.Menu>                       
                                  <header style={{padding:'10px',color:'gray'}}>Rows ale filtered by the followig conditons starting from the top</header> 
                                    <div className='filter-all-content-after'> 

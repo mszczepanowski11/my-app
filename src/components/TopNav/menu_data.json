@@ -1,0 +1,54 @@
+{
+  "options" : [
+    { 
+        "text":"Home",
+        "path":"/",
+        "icon":"home"
+       },
+    { 
+        "text":"Publications",
+        "path":"/publications",
+        "icon":"id card"
+     },
+     { 
+        "text": "People",
+        "path":"/people",
+        "icon":"users"
+       },
+    { 
+       "text": "Entities",
+       "path":"/entities",
+       "icon":"building outline"
+     },
+    {
+       "text": "Administration",
+       "path":"/administration",
+       "icon":"user secret"
+     },
+    { 
+       "text": "Client Contract",
+       "path":"/client_contract",
+       "icon":"edit"
+    },
+    {
+       "text": "Supplier Contract",
+       "path":"/supplier_contract",
+       "icon":"edit"
+     },
+    { 
+       "text": "Corporate",
+       "path":"/corporate",
+       "icon":"building"
+     },
+    {
+       "text": "Group Norms",
+       "path":"/group_norms",
+       "icon":"book"
+    },
+    {
+       "text": "Real Estate Contract",
+       "path":"/estate_contract",
+       "icon":"edit"
+      }
+   ]
+}

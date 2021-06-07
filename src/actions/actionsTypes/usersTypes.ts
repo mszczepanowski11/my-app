@@ -1,4 +1,4 @@
-import { ISingleUser} from '../../components/Entities/users';
+import { ISingleUser} from '../../components/Entities/APIData/users';
 
 export const GET_USERS = "GET_USERS";
 
@@ -9,4 +9,4 @@ export interface IUserTypes {
             currentUser: ISingleUser;
         }
     }
-}
+}  

@@ -1,4 +1,4 @@
-import { IComments} from '../components/Entities/comments';
+import { IComments} from '../components/Entities/APIData/comments';
 import * as actionTypes from '../actions/actionsTypes/commentTypes';
 
 export interface ICommentsReducer {

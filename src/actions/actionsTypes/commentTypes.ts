@@ -1,4 +1,4 @@
-import { IComments } from '../../components/Entities/comments';
+import { IComments } from '../../components/Entities/APIData/comments';
 
 export const GET_COMMENTS = "GET_COMMENTS";
 

@@ -1,18 +1,19 @@
 import React,{FC} from 'react'
+import 'semantic-ui-css/semantic.min.css'
+
 import LatestPublications from './components/common/LatestPublications/LatestPublications'
 import Workspaces from './components/common/Workspaces/Workspaces'
 import ResumeYourWork from './components/common/ResumeYourWork/ResumeYourWork'
 
 
-
-
 const MainPage: FC = () => {
     return(
         <div>
-             <LatestPublications/>
-             <Workspaces/>
-             <ResumeYourWork/>
+           <LatestPublications/>
+           <Workspaces/>
+           <ResumeYourWork/>
         </div>
+
     )
 }
 

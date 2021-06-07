@@ -1,4 +1,4 @@
-import { ISinglePhoto } from '../../components/Entities/photos';
+import { ISinglePhoto } from '../../components/Entities/APIData/photos';
 
 export const GET_PHOTOS = "GET_PHOTOS";
 

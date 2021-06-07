@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components'
+import {useSelector} from 'react-redux'
+import { IState } from '../../reducers/index';
+import { IUsersReducer } from '../../reducers/usersReducer';
 
 const Content = styled.div`
     width:220px;
@@ -12,26 +15,16 @@ const Content = styled.div`
 
 `;
 
-
-export default class Profile extends React.Component{
-
-    state = {
-        user:null,
-        company:null
-      }
-  
-        async componentDidMount() {
-          const url = 'https://jsonplaceholder.typicode.com/users'
-          const response = await fetch(url)
-          const data = await response.json()
-          this.setState({user:data[0].name, company:data[0].company.name})
-      }
-   render(){
+ const Profile:FC = () =>{
+    const { usersList } = useSelector<IState,IUsersReducer>
+    (globalState => ({
+        ...globalState.users
+    }));
     return(
         <Content>
             <img src="./icons/image.png" className="profilePhoto" alt="image1"/>
-            <h4 style={{fontSize:'20px'}}>{this.state.user}</h4>
-            <label>{this.state.company}</label>
+            <h4 style={{fontSize:'20px'}}>{usersList?.[1]?.name}</h4>
+            <label style={{textAlign:'center'}}>{usersList?.[1]?.company?.name}</label>
 
             <hr></hr>
 
@@ -45,5 +38,7 @@ export default class Profile extends React.Component{
             </span>
         </Content>
     
-    )}
-  }
+    )
+}
+
+  export default Profile

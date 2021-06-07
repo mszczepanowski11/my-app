@@ -1,4 +1,4 @@
-import { ISingleUser} from '../components/Entities/users';
+import { ISingleUser} from '../components/Entities/APIData/users';
 import * as actionTypes from '../actions/actionsTypes/usersTypes';
 
 export interface IUsersReducer {
@@ -8,7 +8,7 @@ export interface IUsersReducer {
 
 const defaultState = (): IUsersReducer => ({
     usersList: [],
-    currentUser:null!
+    currentUser:undefined!
 });
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -26,4 +26,4 @@ export default (state = defaultState(), action: any) => {
             return state;
         }
     }
-}
+} 

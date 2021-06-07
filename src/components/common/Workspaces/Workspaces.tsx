@@ -1,7 +1,7 @@
 import React from 'react'
-import {WorkspacesData} from './WorkspacesData'
 import styled from 'styled-components'
 import SingleWorkspace from './SingleWorkspace'
+import {WorkspacesData} from './WorkspacesData'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,6 +15,7 @@ const WorkspacesContent = styled.div`
     height:400px;
     right:3%;
 `
+
 const settings = {
     dots: true,
     slidesToShow: 4,
@@ -22,15 +23,17 @@ const settings = {
 };
 
 const Workspaces = () => {
-   
+
      return (
        <WorkspacesContent>
+           
            <header style={{fontSize:'30px',margin:'20px'}}>Workspaces</header>
            <Slider {...settings}>
-            {WorkspacesData.map(workspace => {
+            {WorkspacesData.map((workspace) => {
                 return(
-                      <SingleWorkspace
+                      <SingleWorkspace 
                             workspace={{
+                                url:workspace.url,
                                 image:workspace.image,
                                 header:workspace.header,
                                 headerImage:workspace.headerImage,

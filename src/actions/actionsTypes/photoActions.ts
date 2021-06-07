@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import * as actionTypes from '../actionsTypes/photoTypes';
-import { ISinglePhoto } from '../../components/Entities/photos';
+import { ISinglePhoto } from '../../components/Entities/APIData/photos';
 
 
 export const getPhotos = (): Promise<ISinglePhoto> => ((dispatch: Dispatch) => {

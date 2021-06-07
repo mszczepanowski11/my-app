@@ -8,7 +8,6 @@ import styled from 'styled-components'
 import {Card,Icon,Input,Dropdown} from 'semantic-ui-react'
 
 
-
 const Content = styled.div`
     position:absolute;
     top:110%;
@@ -66,7 +65,7 @@ const ResumeYourWork : FC = () => {
                        className='search'
                        onChange={(event) => setSearchTerm(event.target.value)}
                        />
-                <Dropdown style={{left:'72%',color:'#007bff'}} text='Followed'/>
+                <Dropdown style={{left:'72%',color:'var(--text-color)'}} text='Followed'/>
                 <header style={{fontSize:'30px',margin:'20px',paddingBottom:'15px'}}>Resume your work</header>
                  <Card.Group doubling>
                      {SingleResume}

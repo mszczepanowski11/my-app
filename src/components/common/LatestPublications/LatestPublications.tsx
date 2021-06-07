@@ -1,9 +1,12 @@
-import React, {FC,Component} from 'react';
+import React, {FC} from 'react';
+import {useSelector} from 'react-redux'
+import { IState } from '../../../reducers/index';
+import { IUsersReducer } from '../../../reducers/usersReducer';
+import { IPhotosReducer } from '../../../reducers/photosReducer';
+import { IPostsReducer } from '../../../reducers/postsReducers';
 import styled from 'styled-components'
 import MainPhoto from './MainPhoto'
 import SinglePublication from './SinglePublication'
-import {posts} from './LatestPublicationsData'
-import './LatestPublicationsData'
 
 
 const LatestPublicationsComponent = styled.div`
@@ -27,69 +30,55 @@ const monthName:string[] = [
 const date = new Date();
 export const currentDate = date.getDate()+ ' ' + monthName[date.getMonth()] + ' ' + date.getFullYear();
 
-export default class LatestPublications extends React.Component {
-    
-    state = {
-        body:[],
-        date:currentDate,
-        author:[],
-        image:[]
-    }
+ const LatestPublications:FC = () => {
 
-    async componentDidMount() {
-        const commentsUrl = 'https://jsonplaceholder.typicode.com/comments'
-        const response = await fetch(commentsUrl)
-        const data = await response.json()
+    const { usersList, photosList, postsList } = useSelector<IState, IUsersReducer & IPhotosReducer &
+    IPostsReducer>(globalState => ({
+        ...globalState.users,
+        ...globalState.photos,
+        ...globalState.posts,
+    }));
 
-        this.setState({
-            body: data[0].body,
-            author:data[0].email
-        })
-    }
-
-
-    render(){
 
     return(
+        
         <LatestPublicationsComponent>
+            {console.log(usersList)}
             <MainPhoto>
             </MainPhoto>
                 <header style={{fontSize:'30px',marginTop:'10px'}}>Latest Publications</header>
 
                 <SinglePublication
                     publication={{
-                        body:this.state.body, 
-                        date:this.state.date,
-                        image:posts[0].url,
-                        avatar:'https://i.pravatar.cc/40',
-                        author:this.state.author
+                        body:postsList?.[0]?.body,
+                        date:currentDate,
+                        image:photosList?.[0]?.url,
+                        avatar:photosList?.[0]?.thumbnailUrl,
+                        author:usersList?.[0]?.name
                     }}
                 />
-                <SinglePublication
-                    publication = 
-                    {{ 
-                        body:this.state.body,
-                        date:this.state.date,
-                        image:posts[1].url,
-                        avatar:'https://i.pravatar.cc/40',
-                        author:this.state.author
+                 <SinglePublication
+                    publication={{
+                        body:postsList?.[4]?.body,
+                        date:currentDate,
+                        image:photosList?.[1]?.url,
+                        avatar:photosList?.[1]?.thumbnailUrl,
+                        author:usersList?.[1]?.name
                     }}
                 />
-                <SinglePublication
-                    publication = 
-                    {{
-                        body:this.state.body,
-                        date:this.state.date,
-                        image:posts[2].url,
-                        avatar:'https://i.pravatar.cc/40',
-                        author:this.state.author
+                 <SinglePublication
+                    publication={{
+                        body:postsList?.[2]?.body,
+                        date:currentDate,
+                        image:photosList?.[2]?.url,
+                        avatar:photosList?.[2]?.thumbnailUrl,
+                        author:usersList?.[2]?.name
                     }}
                 />
-                
-                <a style={{display:'block',fontSize:'15px',marginTop:'10px'}} href='/publications'>See more publications</a>
+                <a style={{color:'rgb(26,37,135)',display:'block',fontSize:'15px',marginTop:'10px'}} href='/publications'>See more publications</a>
 
         </LatestPublicationsComponent>
     );
   };
-}
 
+export default LatestPublications

@@ -1,56 +1,51 @@
-import React from 'react'
-import '@progress/kendo-theme-default/dist/all.css';
-import { DropDownList } from '@progress/kendo-react-dropdowns';
-import { filterBy } from '@progress/kendo-data-query';
+import React,{FC,useState} from 'react'
+import {Link } from 'react-router-dom';
+import {Dropdown,Input,Image,Icon} from 'semantic-ui-react'
+import data from './menu_data.json'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from "react-router-dom";
 
-const options = [
+const ExpandedMenu:FC = () => {
 
-     { text:'Publications',path:'/publications'},
-     { text: 'Entities'},
-     { image:'./icons/administration.png', key: 'administration',  text: 'Administration'},
-     { key: 'client_contract', text: 'Client Contract'},
-     { key: 'supplier_contract',  text: 'Supplier Contract'},
-     { image:'./icons/entities.png', key: 'corporate', text: 'Corporate'},
-     { key: 'group_norms', text: 'Group Norms'},
-     { key: 'account', text: 'Account'},
-     { image:'./icons/privacy.png',key: 'privacy', text: 'Privacy'}, 
-     { image:'./icons/settings.png', key: 'settings', text: 'Settting'},
-     { image:'./icons/logout.png',key: 'logout', text: 'Logout'},
- ];
+  const [searchTerm,setSearchTerm] = useState('');
 
-export default class ExpandedMenu extends React.Component {
-
- state = {data:options}
- filterChange = (event) => { 
-   this.setState({
-     data:this.filterData(event.filter)
-   })
- }
- filterData(filter) {
-    const data = options
-    return filterBy(data,filter)
- }
-
-  render(){
-     return(
-      <Router>
-        <div>
-          <DropDownList
-
-                data={this.state.data}
-                textField="text"
-                filterable={true}
-                onFilterChange={this.filterChange}
-            />
-          </div>
-      </Router> 
+  const renderMenuItems = data => {      
+      return data.options.filter((item) => {
+        if(searchTerm === "") {
+            return item
+        } else if(item.text.toLowerCase().includes(searchTerm.toLowerCase())){
+          return item
+        }
+        }).map((item) => {
+          return(
+            <Dropdown.Item
+               as={Link} to={item.path}
+               {...item} />   
+        )})
+      }
+        return(
+          <Dropdown style={{marginLeft:'35px'}}>
+             <Dropdown.Menu>
+               <Dropdown.Header icon='building' content='Corporate' />
+               <Input onClick={e => e.stopPropagation()} onChange={(event) => setSearchTerm(event.target.value)} placeholder='Filter...' icon='search' iconPosition='left' className='search' />
+             <Dropdown.Menu scrolling>
+             <Dropdown.Header>Platform</Dropdown.Header>
+              {renderMenuItems(data)}
+            </Dropdown.Menu> 
+            
+            <Dropdown.Divider/>
+              <Dropdown.Header>Account</Dropdown.Header>
+              <Dropdown.Item>
+                    <Image style={{float:'left',marginTop:'1px'}} avatar src="https://i.pravatar.cc/40"/>
+                    <header>Leanne Graham</header>   
+                    <Link to='/profile'><span>See profile</span></Link>
+                </Dropdown.Item>
+              <Dropdown.Item><Icon name='lock'/><Link to='/privacy'>Privacy</Link></Dropdown.Item>
+              <Dropdown.Item><Icon name='settings'/><Link to='/settings'>Settings</Link></Dropdown.Item>
+              <Dropdown.Divider/>
+              <Dropdown.Item style={{textAlign: 'center',marginRight:'10px'}}><Icon name='log out'/>Logout</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
     )
-  }    
-}                                                                                                                                                                                                   
+}
+
+export default ExpandedMenu
