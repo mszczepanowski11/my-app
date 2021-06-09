@@ -19,7 +19,7 @@ export default (state = defaultState(), action: any) => {
                 photosList: payload.photosList,
             }
         }
-        default: {
+        default: { 
             return state;
         }
     }

@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { IState } from '../../../reducers/index';
 import { IUsersReducer } from '../../../reducers/usersReducer';
@@ -39,11 +40,8 @@ export const currentDate = date.getDate()+ ' ' + monthName[date.getMonth()] + ' 
         ...globalState.posts,
     }));
 
-
     return(
-        
         <LatestPublicationsComponent>
-            {console.log(usersList)}
             <MainPhoto>
             </MainPhoto>
                 <header style={{fontSize:'30px',marginTop:'10px'}}>Latest Publications</header>
@@ -75,7 +73,7 @@ export const currentDate = date.getDate()+ ' ' + monthName[date.getMonth()] + ' 
                         author:usersList?.[2]?.name
                     }}
                 />
-                <a style={{color:'rgb(26,37,135)',display:'block',fontSize:'15px',marginTop:'10px'}} href='/publications'>See more publications</a>
+                <Link to='/publications' style={{color:'rgb(26,37,135)',display:'block',fontSize:'15px',marginTop:'10px'}} href='/publications'>See more publications</Link>
 
         </LatestPublicationsComponent>
     );

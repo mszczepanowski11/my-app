@@ -11,7 +11,6 @@ export const getPhotos = (): Promise<ISinglePhoto> => ((dispatch: Dispatch) => {
             dispatch({
                 type: actionTypes.GET_PHOTOS,
                 photosList,
-               
             })
         })
 }) as any;

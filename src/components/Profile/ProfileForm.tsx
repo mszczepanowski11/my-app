@@ -37,7 +37,6 @@ const formImageStyle = {
     height:'90px'
 }
 
-
 interface Values {
     name:string,
     company: string,
@@ -57,7 +56,7 @@ const validationSchema = Yup.object().shape({
     city:Yup.string().required().max(30),
 })
 
-export const ProfileForm:FC<Props> = ({onSubmit},props) => {
+export const ProfileForm:FC<Props> = ({onSubmit}) => {
     
     const {photosList } = useSelector<IState, IPhotosReducer>
     (globalState => ({
@@ -91,7 +90,9 @@ export const ProfileForm:FC<Props> = ({onSubmit},props) => {
             <FormContent className='form-content'>
                
                <Form>
-               <Icon style={{position:'absolute',top:'30%',left:'170%',cursor:'pointer'}} onClick={handleChange}>{disabled ? editIcon : saveIcon}</Icon>
+               <Icon 
+                 style={{position:'absolute',top:'30%',left:'170%',cursor:'pointer'}} 
+                 onClick={handleChange}>{disabled ? editIcon : saveIcon}</Icon>
                 <div>
                 <Image style={formImageStyle} src={photosList?.[1]?.url} avatar/>
                 <a href="##">See profile</a>

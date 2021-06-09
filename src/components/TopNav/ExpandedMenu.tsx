@@ -9,6 +9,7 @@ const ExpandedMenu:FC = () => {
   const [searchTerm,setSearchTerm] = useState('');
 
   const renderMenuItems = data => {      
+      // eslint-disable-next-line array-callback-return
       return data.options.filter((item) => {
         if(searchTerm === "") {
             return item
@@ -26,7 +27,7 @@ const ExpandedMenu:FC = () => {
           <Dropdown style={{marginLeft:'35px'}}>
              <Dropdown.Menu>
                <Dropdown.Header icon='building' content='Corporate' />
-               <Input onClick={e => e.stopPropagation()} onChange={(event) => setSearchTerm(event.target.value)} placeholder='Filter...' icon='search' iconPosition='left' className='search' />
+               <Input onClick={(e: { stopPropagation: () => any; }) => e.stopPropagation()} onChange={(event) => setSearchTerm(event.target.value)} placeholder='Filter...' icon='search' iconPosition='left' className='search' />
              <Dropdown.Menu scrolling>
              <Dropdown.Header>Platform</Dropdown.Header>
               {renderMenuItems(data)}

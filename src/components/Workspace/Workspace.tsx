@@ -15,14 +15,10 @@ const WorkspaceContent = styled.div`
     right:7%;
 `
 
-
 const Workspace:FC = () => {
     
-    const [active,setActive] = useState(3)
-    const setView = active => {
-        setActive(active)
-    }
-
+    const [active,setActive] = useState(2)
+   
     return(
         <WorkspaceContent>
                 {active === 1 ?

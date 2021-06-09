@@ -84,8 +84,12 @@ export const Entities:FC = () => {
                     <div className='entities-filters-content'>
                         <div className='filter-all-content'> 
                             <Icon name='dot circle outline'/>
-                              <Dropdown text='All'>
-                               <Dropdown.Menu>                       
+                              <Dropdown text='All'/> 
+                        </div> 
+                        <Icon name='ellipsis horizontal'/> {' '}|
+                        <Icon fitted name='sort alphabet down'>{' '}Sort</Icon>
+                        <Dropdown icon='filter' text='Filter'>
+                        <Dropdown.Menu>                       
                                  <header style={{padding:'10px',color:'gray'}}>Rows ale filtered by the followig conditons starting from the top</header> 
                                    <div className='filter-all-content-after'> 
                                       <div>
@@ -116,11 +120,7 @@ export const Entities:FC = () => {
                                       </div>                 
                                    </div>
                                </Dropdown.Menu>
-                            </Dropdown>
-                        </div> 
-                        <Icon name='ellipsis horizontal'/> {' '}|
-                        <Icon fitted name='sort alphabet down'>{' '}Sort</Icon>
-                        <Icon fitted name='filter'>{' '}Filters</Icon> 
+                        </Dropdown>
                         <Icon onClick={setClicked} name='expand arrows alternate'/> 
                         {console.log(clicked)}
                     |   <Icon fitted onClick={shareURL} name='share'>{' '}{!copied ? 'Share' : 'Copied!'}</Icon>
@@ -144,7 +144,12 @@ export const Entities:FC = () => {
                  placeholder='Search...'
                  onChange={event => {setSearchTerm(event.target.value)}}
                 />
-            <Dropdown style={followedDropdownStyle} clasName='dropdown' text="Followed"/>
+            <Dropdown style={followedDropdownStyle} clasName='dropdown' text="Followed">
+             <Dropdown.Menu>
+               <Dropdown.Item>All</Dropdown.Item>
+               <Dropdown.Item>Main</Dropdown.Item>
+             </Dropdown.Menu>
+            </Dropdown>
             </EntitiesRightSide>
          </EntitiesTopBar> 
 

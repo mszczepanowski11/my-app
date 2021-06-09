@@ -21,8 +21,7 @@ const labelStyle = {
 } as CSSProperties
 
 
-  
-const MainPhoto : FC = (props) => {
+const MainPhoto : FC = () => {
 
   const {postsList,usersList } = useSelector<IState,IPostsReducer & IUsersReducer>
     (globalState => ({

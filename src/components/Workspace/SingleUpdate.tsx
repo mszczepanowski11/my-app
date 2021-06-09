@@ -31,6 +31,7 @@ export const SingleUpdate = () => {
     const posts = postsList.slice(indexOfFirstPost,indexOfLastPost)
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
+    // eslint-disable-next-line array-callback-return
     const SingleUpdate = posts.filter((post,key) => {
         const displayPost = posts?.[key].title    
 

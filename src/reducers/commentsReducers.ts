@@ -16,7 +16,7 @@ export default (state = defaultState(), action: any) => {
             const payload: actionTypes.ICommentsTypes['GET_COMMENTS'] = action;
             return {
                 ...state,
-                commentsList: payload.commentsList,
+                commentsList:payload.commentsList,
             }
         }
         default: {

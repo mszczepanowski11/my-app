@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
+import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import {useSelector} from 'react-redux'
 import { IState } from '../../reducers/index';
 import { IUsersReducer } from '../../reducers/usersReducer';
+import {IPhotosReducer} from '../../reducers/photosReducer'
 
 const Content = styled.div`
     width:220px;
@@ -15,16 +17,20 @@ const Content = styled.div`
 
 `;
 
- const Profile:FC = () =>{
-    const { usersList } = useSelector<IState,IUsersReducer>
+ const Profile:FC = () => {
+    const { usersList,photosList } = useSelector<IState,IUsersReducer & IPhotosReducer>
     (globalState => ({
-        ...globalState.users
+        ...globalState.users,
+        ...globalState.photos
     }));
+
     return(
         <Content>
-            <img src="./icons/image.png" className="profilePhoto" alt="image1"/>
-            <h4 style={{fontSize:'20px'}}>{usersList?.[1]?.name}</h4>
-            <label style={{textAlign:'center'}}>{usersList?.[1]?.company?.name}</label>
+            <Link to='/profile'>
+                <img src={photosList?.[1]?.thumbnailUrl} className="profilePhoto" alt="image1"/>
+                <h4 style={{fontSize:'20px'}}>{usersList?.[1]?.name}</h4>
+                <label style={{textAlign:'center',color:'black',cursor:'pointer'}}>{usersList?.[1]?.company?.name}</label>
+            </Link>
 
             <hr></hr>
 

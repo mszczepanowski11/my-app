@@ -44,7 +44,6 @@ const AppWrapper : FC = () => {
       })
   },[])
 
-
   return (
     <div>
       <Router>
@@ -84,6 +83,21 @@ const AppWrapper : FC = () => {
                 <Route exact path='/settings'
                   component={Settings}>  
                 </Route> 
+                <Route exact path='/client_contract'
+                  component={Workspace}>
+                </Route>  
+                <Route exact path='/supplier_contract'
+                  component={Workspace}>
+                </Route>  
+                <Route exact path='/corporate'
+                  component={Workspace}>
+                </Route>  
+                <Route exact path='/group_norms'
+                  component={Workspace}>
+                </Route>  
+                <Route exact path='/estate_contract'
+                  component={Workspace}>
+                </Route>  
               </Switch>
             </MainWrapper>
       </Router>

@@ -57,7 +57,6 @@ const ResumeYourWork : FC = () => {
      </Card>
     )
 
-
     return(
              <Content>
                 <Input style={{left:'70%'}}
@@ -65,7 +64,12 @@ const ResumeYourWork : FC = () => {
                        className='search'
                        onChange={(event) => setSearchTerm(event.target.value)}
                        />
-                <Dropdown style={{left:'72%',color:'var(--text-color)'}} text='Followed'/>
+                <Dropdown style={{left:'72%',color:'var(--text-color)'}} text='Followed'>
+                    <Dropdown.Menu>
+                        <Dropdown.Item>All</Dropdown.Item>
+                        <Dropdown.Item>Main</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
                 <header style={{fontSize:'30px',margin:'20px',paddingBottom:'15px'}}>Resume your work</header>
                  <Card.Group doubling>
                      {SingleResume}
